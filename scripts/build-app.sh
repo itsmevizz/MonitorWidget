@@ -9,7 +9,7 @@ cd "$(dirname "$0")/.."
 
 APP_NAME="MonitorWidget"
 EXECUTABLE="MonitorWidget"
-VERSION="${VERSION:-1.0.1}"
+VERSION="${VERSION:-1.0.0}"
 BUNDLE_ID="${BUNDLE_ID:-local.monitorwidget}"
 SIGN_IDENTITY="${SIGN_IDENTITY:--}"
 

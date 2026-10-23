@@ -7,8 +7,8 @@
 # Release checklist: bump version, rebuild with scripts/build-app.sh, and update sha256 from
 # build/MonitorWidget-<version>.dmg.sha256.
 cask "monitorwidget" do
-  version "1.0.1"
-  sha256 "639d7d9a9c7c82b0038a61c1b4cad8382a1492f69e8542d4b7c1d85dd18b459b"
+  version "1.0.0"
+  sha256 "dbb8ced8afa740cdd148e152695d21e88744cd12903f5f658c890932cfcc2dde"
 
   url "https://github.com/itsmevizz/MonitorWidget/releases/download/v#{version}/MonitorWidget-#{version}.dmg"
   name "MonitorWidget"
