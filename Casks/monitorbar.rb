@@ -24,7 +24,7 @@ cask "monitorbar" do
   # The build is ad-hoc signed (not notarized), so macOS would block the first launch.
   # Removing the quarantine flag lets it open normally. Remove this once the app is notarized.
   postflight_steps do
-    run "/usr/bin/xattr", "-dr", "com.apple.quarantine", "/Applications/MonitorBar.app"
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "/Applications/MonitorBar.app"]
   end
 
   zap trash: [
