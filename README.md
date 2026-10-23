@@ -65,7 +65,7 @@ To update: `brew upgrade --cask monitorbar`. To remove: `brew uninstall --cask m
 Check the download with the `.sha256` file that comes with the release:
 
 ```sh
-shasum -a 256 -c MonitorWidget-1.0.0.dmg.sha256
+shasum -a 256 -c MonitorBar-1.0.0.dmg.sha256
 ```
 
 ### Build from source
