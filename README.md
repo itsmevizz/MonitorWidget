@@ -1,12 +1,12 @@
-# MonitorBar
+# MonitorWidget
 
 Control your external monitor from the macOS menu bar: brightness, contrast, volume, mute, the monitor's own picture and color user modes, input source, saved presets, and more. No more reaching for the physical buttons.
 
-MonitorBar talks to the monitor over **DDC/CI**, the same channel the monitor's on-screen menu uses, so changes are made on the monitor itself.
+MonitorWidget talks to the monitor over **DDC/CI**, the same channel the monitor's on-screen menu uses, so changes are made on the monitor itself.
 
 ![Menu bar item showing live brightness](docs/screenshots/menubar.png)
 
-![MonitorBar panel](docs/screenshots/panel.png)
+![MonitorWidget panel](docs/screenshots/panel.png)
 
 ## Features
 
@@ -59,13 +59,13 @@ To update: `brew upgrade --cask monitorbar`. To remove: `brew uninstall --cask m
 ### Download the .dmg
 
 1. Download `MonitorBar-<version>.dmg` from [Releases](https://github.com/itsmevizz/MonitorWidget/releases).
-2. Open the disk image and drag **MonitorBar** into **Applications**.
-3. Launch it from Applications. The first launch may be blocked because the app is not notarized yet: right-click MonitorBar → **Open** → **Open**. You only need to do this once.
+2. Open the disk image and drag **MonitorWidget** into **Applications**.
+3. Launch it from Applications. The first launch may be blocked because the app is not notarized yet: right-click MonitorWidget → **Open** → **Open**. You only need to do this once.
 
 Check the download with the `.sha256` file that comes with the release:
 
 ```sh
-shasum -a 256 -c MonitorBar-1.0.0.dmg.sha256
+shasum -a 256 -c MonitorWidget-1.0.0.dmg.sha256
 ```
 
 ### Build from source
@@ -84,8 +84,8 @@ open build/MonitorBar.app
 1. Connect the monitor over USB-C or DisplayPort.
 2. Make sure DDC/CI is on in the monitor's on-screen menu.
 3. Click the menu bar icon. The panel shows the monitor's name and "DDC/CI connected" when it works.
-4. If the icon doesn't appear on macOS 26, open **System Settings → Menu Bar** and allow MonitorBar to show in the menu bar.
-5. To start MonitorBar at login, switch on **Open at login** in the panel footer.
+4. If the icon doesn't appear on macOS 26, open **System Settings → Menu Bar** and allow MonitorWidget to show in the menu bar.
+5. To start MonitorWidget at login, switch on **Open at login** in the panel footer.
 
 ## Command-line tool (`monitorctl`)
 
@@ -100,12 +100,12 @@ Feature names: `brightness`, `contrast`, `volume`, `mute`, `preset`, `red`, `gre
 
 ## Adapting to your monitor
 
-MonitorBar discovers every feature your monitor reports, so brightness, contrast and volume work without configuration. Two things are monitor-specific:
+MonitorWidget discovers every feature your monitor reports, so brightness, contrast and volume work without configuration. Two things are monitor-specific:
 
-- **Picture mode names.** The monitor reports picture modes as raw codes (for example `0xE2`). MonitorBar shows them as "Mode 0x.." until they're labelled for your monitor.
+- **Picture mode names.** The monitor reports picture modes as raw codes (for example `0xE2`). MonitorWidget shows them as "Mode 0x.." until they're labelled for your monitor.
 - **Vendor-specific codes.** Brands use different codes for extra features.
 
-To check your monitor and make MonitorBar fit it, use the ready-made prompt in [docs/PORTING_PROMPT.md](docs/PORTING_PROMPT.md). Paste it into an AI coding assistant that can run commands on your Mac.
+To check your monitor and make MonitorWidget fit it, use the ready-made prompt in [docs/PORTING_PROMPT.md](docs/PORTING_PROMPT.md). Paste it into an AI coding assistant that can run commands on your Mac.
 
 ## How it works
 
@@ -122,7 +122,7 @@ The full settings analysis for the Acer KA270 P6 is in [MONITOR_REPORT.md](MONIT
 | Problem | What to try |
 |---|---|
 | "No external monitor found" | Check the cable is USB-C/DisplayPort (not HDMI on base M1/M2), turn on DDC/CI in the monitor's menu, then click **Retry**. |
-| Menu bar icon is missing (macOS 26) | System Settings → Menu Bar → allow MonitorBar. |
+| Menu bar icon is missing (macOS 26) | System Settings → Menu Bar → allow MonitorWidget. |
 | Values don't update | Click the refresh icon or press R. |
 | Controls seem slow | DDC/CI is a slow bus; each write takes about 40–60 ms. Drag more slowly or use the arrow keys. |
 | Screen went blank after changing input | Switch the input back using the monitor's physical buttons. |
@@ -144,4 +144,4 @@ The full settings analysis for the Acer KA270 P6 is in [MONITOR_REPORT.md](MONIT
 
 ## License
 
-Not yet chosen. Add a `LICENSE` file before accepting outside contributions.
+MIT. See [LICENSE](LICENSE).
