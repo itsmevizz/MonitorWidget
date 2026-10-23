@@ -13,11 +13,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = statusItem.button {
-            button.image = NSImage(systemSymbolName: "display", accessibilityDescription: "MonitorBar")
+            button.image = NSImage(systemSymbolName: "display", accessibilityDescription: "MonitorWidget")
             button.imagePosition = .imageLeading
             button.action = #selector(togglePopover(_:))
             button.target = self
-            button.toolTip = "MonitorBar"
+            button.toolTip = "MonitorWidget"
         }
 
         // The SwiftUI view scrolls internally; the popover keeps a fixed size that fits the screen.
@@ -46,12 +46,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         model.discover()
 
-        // Used for README screenshots and troubleshooting: `MonitorBar --show-panel`.
+        // Used for README screenshots and troubleshooting: `MonitorWidget --show-panel`.
         if CommandLine.arguments.contains("--show-panel") {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [weak self] in self?.showPanel() }
         }
 
-        // `MonitorBar --snapshot out.png` renders the panel to a 2x PNG and quits (used for the README).
+        // `MonitorWidget --snapshot out.png` renders the panel to a 2x PNG and quits (used for the README).
         if let index = CommandLine.arguments.firstIndex(of: "--snapshot"), index + 1 < CommandLine.arguments.count {
             let path = CommandLine.arguments[index + 1]
             DispatchQueue.main.asyncAfter(deadline: .now() + 6) { [weak self] in
@@ -78,7 +78,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         hosting.layoutSubtreeIfNeeded()
 
         guard let rep = hosting.bitmapImageRepForCachingDisplay(in: hosting.bounds) else {
-            NSLog("MonitorBar: snapshot failed")
+            NSLog("MonitorWidget: snapshot failed")
             return
         }
         hosting.cacheDisplay(in: hosting.bounds, to: rep)

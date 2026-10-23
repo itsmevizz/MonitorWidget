@@ -1,4 +1,4 @@
-// Renders the MonitorBar app icon as an .iconset and converts it to AppIcon.icns.
+// Renders the MonitorWidget app icon as an .iconset and converts it to AppIcon.icns.
 // Usage: swift scripts/make-icon.swift <output-dir>
 import AppKit
 

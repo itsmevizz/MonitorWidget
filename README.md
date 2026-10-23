@@ -49,23 +49,23 @@ One-time setup, then install with one command:
 
 ```sh
 brew tap itsmevizz/monitorwidget https://github.com/itsmevizz/MonitorWidget.git
-brew install --cask itsmevizz/monitorwidget/monitorbar
+brew install --cask itsmevizz/monitorwidget/monitorwidget
 ```
 
 The `monitorctl` command-line tool is installed alongside the app.
 
-To update: `brew upgrade --cask monitorbar`. To remove: `brew uninstall --cask monitorbar` (add `--zap` to also remove preferences).
+To update: `brew upgrade --cask monitorwidget`. To remove: `brew uninstall --cask monitorwidget` (add `--zap` to also remove preferences).
 
 ### Download the .dmg
 
-1. Download `MonitorBar-<version>.dmg` from [Releases](https://github.com/itsmevizz/MonitorWidget/releases).
+1. Download `MonitorWidget-<version>.dmg` from [Releases](https://github.com/itsmevizz/MonitorWidget/releases).
 2. Open the disk image and drag **MonitorWidget** into **Applications**.
 3. Launch it from Applications. The first launch may be blocked because the app is not notarized yet: right-click MonitorWidget → **Open** → **Open**. You only need to do this once.
 
 Check the download with the `.sha256` file that comes with the release:
 
 ```sh
-shasum -a 256 -c MonitorBar-1.0.0.dmg.sha256
+shasum -a 256 -c MonitorWidget-1.0.1.dmg.sha256
 ```
 
 ### Build from source
@@ -75,8 +75,8 @@ Requires Xcode command-line tools (`xcode-select --install`).
 ```sh
 git clone https://github.com/itsmevizz/MonitorWidget.git
 cd MonitorWidget
-./scripts/build-app.sh          # writes build/MonitorBar.app and build/MonitorBar-<version>.dmg
-open build/MonitorBar.app
+./scripts/build-app.sh          # writes build/MonitorWidget.app and build/MonitorWidget-<version>.dmg
+open build/MonitorWidget.app
 ```
 
 ## First run

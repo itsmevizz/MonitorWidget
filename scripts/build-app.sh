@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Builds MonitorBar.app (menu bar only), signs it, and packages build/MonitorBar-<version>.dmg.
+# Builds MonitorWidget.app (menu bar only), signs it, and packages build/MonitorWidget-<version>.dmg.
 #
 # Signing: uses $SIGN_IDENTITY when set (a "Developer ID Application: ..." identity), otherwise an
 # ad-hoc signature. Notarization is a separate step and needs an Apple Developer account.
@@ -7,10 +7,10 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-APP_NAME="MonitorBar"
+APP_NAME="MonitorWidget"
 EXECUTABLE="MonitorWidget"
-VERSION="${VERSION:-1.0.0}"
-BUNDLE_ID="${BUNDLE_ID:-local.monitorbar}"
+VERSION="${VERSION:-1.0.1}"
+BUNDLE_ID="${BUNDLE_ID:-local.monitorwidget}"
 SIGN_IDENTITY="${SIGN_IDENTITY:--}"
 
 BUILD="build"

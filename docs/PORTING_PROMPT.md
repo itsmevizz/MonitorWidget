@@ -1,11 +1,11 @@
-# Porting MonitorBar to your Mac and monitor
+# Porting MonitorWidget to your Mac and monitor
 
 Copy everything in the block below into an AI coding assistant that can run shell commands on your Mac (for example Claude Code, Cursor, or similar). Run it from the root of a cloned `MonitorWidget` repository.
 
 ---
 
 ```text
-You are helping me get MonitorBar (a macOS menu bar app that controls an external monitor over DDC/CI) running on my Mac and my monitor. The repo is the current directory. Read README.md and MONITOR_REPORT.md first.
+You are helping me get MonitorWidget (a macOS menu bar app that controls an external monitor over DDC/CI) running on my Mac and my monitor. The repo is the current directory. Read README.md and MONITOR_REPORT.md first.
 
 Work in this order and report back after each step:
 
@@ -39,7 +39,7 @@ Work in this order and report back after each step:
 
 6. Build and run
    - Run: ./scripts/build-app.sh
-   - Run: open build/MonitorBar.app
+   - Run: open build/MonitorWidget.app
    - Confirm the menu bar item appears. If it does not on macOS 26, tell me to allow it in System Settings → Menu Bar.
 
 7. Report
