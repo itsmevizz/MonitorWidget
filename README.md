@@ -4,9 +4,7 @@ Control your external monitor from the macOS menu bar: brightness, contrast, vol
 
 MonitorWidget talks to the monitor over **DDC/CI**, the same channel the monitor's on-screen menu uses, so changes are made on the monitor itself.
 
-![Menu bar item showing live brightness](docs/screenshots/menubar.png)
-
-![MonitorWidget panel](docs/screenshots/panel.png)
+![MonitorWidget in the macOS menu bar with the control panel open](docs/screenshots/panel.png)
 
 ## Features
 
