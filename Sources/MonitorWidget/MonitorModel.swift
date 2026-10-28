@@ -34,6 +34,7 @@ final class MonitorModel: ObservableObject {
     @Published var launchAtLogin = false
 
     private var monitor: Monitor?
+    private var discoveryID = 0
     private let presetsKey = "monitorPresets"
 
     /// Continuous controls shown as sliders, in display order.
@@ -62,13 +63,20 @@ final class MonitorModel: ObservableObject {
 
     // MARK: - Discovery & refresh
 
-    func discover() {
+    /// Finds the external monitor. After a replug the display's DDC channel can appear a moment after
+    /// the screen-change notification, so a failed lookup is retried a few times. Each call supersedes
+    /// any earlier one, so a slow, stale lookup can never overwrite a newer result.
+    func discover(retriesLeft: Int = 6) {
+        discoveryID += 1
+        let id = discoveryID
         Task {
             let found: Monitor? = await Task.detached(priority: .userInitiated) {
                 guard let m = Monitor.discover().first else { return nil }
-                m.loadCapabilities()
-                return m
+                // A handle that cannot read its capabilities is stale (e.g. from before an unplug).
+                return m.loadCapabilities() ? m : nil
             }.value
+
+            guard id == discoveryID else { return }
 
             monitor = found
             connected = found != nil
@@ -77,7 +85,13 @@ final class MonitorModel: ObservableObject {
             inputOptions = found?.capabilities[VCP.input] ?? []
             colorPresetOptions = found?.capabilities[VCP.colorPreset] ?? []
             pictureModeOptions = found?.capabilities[VCP.pictureMode] ?? []
-            refresh()
+
+            if found != nil {
+                refresh()
+            } else if retriesLeft > 0 {
+                try? await Task.sleep(for: .milliseconds(1500))
+                discover(retriesLeft: retriesLeft - 1)
+            }
         }
     }
 
